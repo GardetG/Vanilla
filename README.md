@@ -18,7 +18,7 @@ On se place dans le contexte de la gestion d'une flotte virtuelle d'objet IOT co
 2) En tant qu'utilisateur, je souhaite pouvoir superviser le niveau de batterie : 
    - Le pourcentage de batterie des capteurs  est toujours de 0%. Corrigez le back-end pour implémenter le bon calcul :  
    PourcentageBattery = Voltage du capteur / Voltage Max de ce modèle de capteur * 100
-   - Retournez la liste des capteurs triée par ordre de pourcentage de batterie croissant, en ajoutant au préalable un 
+   - Retournez la liste des capteurs triée par ordre de pourcentage de batterie croissant en ajoutant au préalable un 
    test unitaire pour vérifier le tri.
 3) La fonctionnalité de désactivation des appareils sous le seuil de batterie limite n'est pas fonctionelle :
    - Identifiez et corrigez la raison pour laquelle l'état des capteurs n'est pas mis à jour
@@ -46,3 +46,6 @@ selon la méthode de votre choix.
 
 API Back-end : [http://localhost:8080](http://localhost:8080)  
 Front-end :  [http://localhost:4200](http://localhost:4200)
+
+### Crédit
+Basé sur le projet de [Tomasz Wojewódka](https://github.com/tomaszwojewodka)
