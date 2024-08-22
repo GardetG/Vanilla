@@ -1,0 +1,35 @@
+databaseChangeLog:
+  - changeSet:
+      id: 12
+      author: GG0ACB5L
+      changes:
+        - insert:
+            tableName: relay
+            columns:
+              - column:
+                  name: id
+                  value: 0
+              - column:
+                  name: name
+                  value: 'Relay001'
+              - column:
+                  name: state
+                  value: true
+              - column:
+                  name: battery
+                  value: 55
+        - insert:
+            tableName: relay
+            columns:
+              - column:
+                  name: id
+                  value: 1
+              - column:
+                  name: name
+                  value: 'Relay002'
+              - column:
+                  name: state
+                  value: false
+              - column:
+                  name: battery
+                  value: 65

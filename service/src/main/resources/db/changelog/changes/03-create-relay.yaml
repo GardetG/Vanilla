@@ -1,0 +1,24 @@
+databaseChangeLog:
+  - changeSet:
+      id: 2
+      author: GG0ACB5L
+      changes:
+        - createTable:
+            tableName: relay
+            columns:
+              - column:
+                  name: id
+                  type: int
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: name
+                  type: varchar(25)
+              - column:
+                  name: state
+                  type: boolean
+              - column:
+                  name: battery
+                  type: int

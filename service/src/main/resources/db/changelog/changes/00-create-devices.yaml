@@ -1,0 +1,27 @@
+databaseChangeLog:
+  - changeSet:
+      id: 0
+      author: GG0ACB5L
+      changes:
+        - createTable:
+            tableName: sensor
+            columns:
+              - column:
+                  name: id
+                  type: int
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: name
+                  type: varchar(25)
+              - column:
+                  name: state
+                  type: boolean
+              - column:
+                  name: volt
+                  type: int
+              - column:
+                  name: model_id
+                  type: int

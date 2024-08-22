@@ -5,7 +5,7 @@ import {ThemeModule} from '../@theme/theme.module';
 import {PagesComponent} from './pages.component';
 import {DashboardModule} from './dashboard/dashboard.module';
 import {PagesRoutingModule} from './pages-routing.module';
-import {DashboardService} from './dashboard/dashboard.service';
+import {DashboardService} from '../services/dashboard.service';
 
 @NgModule({
     imports: [

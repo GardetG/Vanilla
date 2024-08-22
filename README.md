@@ -1,58 +1,48 @@
-# VANILLA 
-Vanilla is a multi-module maven project with Spring Boot backend and Angular frontend using ngx-admin starter kit.
-Ready to clone and use in your next application as a starting point to develop [Modular Monolith](http://www.kamilgrzybek.com/design/modular-monolith-primer/).
+# VANILLA  
 
-## Features
-- Multi-module Maven project
-- Spring Boot
-- Angular
-- ngx-admin with Nebular Theme by [Akveo](https://akveo.com/)
-- Hot reloading of frontend changes
-- Sample API integration setup 
+Vanilla est un project de test technique sous forme d'une application monolithque incluant :  
+- Back-end : API Rest en Java / Spring Boot
+- Front-end : Application TypeScript / Angular  
 
-If you need more features, and a commercial support **consider buying Akveo [Java/Spring Starter Bundle](https://store.akveo.com/products/java-spring-starter-bundle?variant=15404085018673)** to support their effort.
+On se place dans le contexte de la gestion d'une flotte virtuelle d'objet IOT composée de :
+- Capteur (Sensor) de different modèle (Model)
+- Relais (Relay)
 
 ## TODO
-- Better CORS and CSRF handling
-- Authentication and Authorization 
-- Integration with [Keycloak](https://www.keycloak.org/)
-- Example of [Hexagonal Architecture](https://reflectoring.io/spring-hexagonal/)
-- Docker support 
+
+1) En tant qu'utilisateur, je souhaite pouvoir consulter dans le dashboard le constructeur de chaque capteur : 
+   - Cette information est présente dans la table de l'entitée Model (clé primaire id, colonne constructor). La table 
+   de l'entitée Sensor référence le modèle de capteur via la colonne model_id. Corrigez le back-end afin de récupérer 
+   le constructeur dans la réponse API
+   - Modifiez le front-end pour afficher l'information sur la page dashboard.
+2) En tant qu'utilisateur, je souhaite pouvoir superviser le niveau de batterie : 
+   - Le pourcentage de batterie des capteurs  est toujours de 0%. Corrigez le back-end pour implémenter le bon calcul :  
+   PourcentageBattery = Voltage du capteur / Voltage Max de ce modèle de capteur * 100
+   - Retournez la liste des capteurs triée par ordre de pourcentage de batterie croissant, en ajoutant au préalable un 
+   test unitaire pour vérifier le tri.
+3) La fonctionnalité de désactivation des appareils sous le seuil de batterie limite n'est pas fonctionelle :
+   - Identifiez et corrigez la raison pour laquelle l'état des capteurs n'est pas mis à jour
+   - Le seuil de batterie est fixé en dur dans le code, rendez le configurable via le fichier application.properties
+   - Etendre cette logique pour traiter à la fois les capteurs et les relais (on pourra exploiter les similaritées des 
+   objets via le polymorphisme)
+4) Dans la partie front-end, sur la page dashboard, à coté des titres Capteurs et Relais, indiquez pour chacun le nombre
+d'éléments actifs (state = true) sur le nombre total en se basant sur les données déjà récupérées de l'API. (Pas d'appel 
+supplémentaire au Back-end)   
+Exemple : Capteurs (2 / 3) 
+5) La méthode update du service DeviceService est très lente. Optimisez cette méthode en parallélisant les opérations  
+selon la méthode de votre choix.
+
  
 ## Usage
-### Production
-> ./mvnw clean install 
-> 
-> java -jar service/target/vanilla-service-0.0.1-SNAPSHOT.jar 
-
-Open the browser [http://localhost:8080](http://localhost:8080)
+### Install
+> ./mvnw clean install -DskipTests
 
 ### Development
-> cd service
-> 
+> cd service  
 > ../mvnw spring-boot:run
 > 
-> cd web
-> 
-> ../mvnw frontend:install-node-and-npm
->
+> cd web  
 > npm run start
 
-Open the browser [http://localhost:4200](http://localhost:4200)
-
-Run Postgres, Keycloak and Adminer using docker compose
-
-> sudo docker-compose -f service/src/main/docker/all-services.yml up --build
-
-Be sure to change passwords in \*-password files.
-Don't use production passwords, add the files to git ignore in your project.
-**For production use docker secrets**
-
-## References:
-- [ngx-admin by Akveo](https://github.com/akveo/ngx-admin)
-- [Spring Guides by VMware](https://spring.io/guides)
-- [Angular docs by Google](https://angular.io/docs)
-- [Modular Monolith](http://www.kamilgrzybek.com/design/modular-monolith-primer/)
-- [Hexagonal Architecture](https://reflectoring.io/spring-hexagonal/)
-- [A Minimalist Guide to Building Spring Boot Angular 5 Applications](https://shekhargulati.com/2017/11/08/a-minimalist-guide-to-building-spring-boot-angular-5-applications/)
-- [How do I set the baseUrl for Angular HttpClient](https://stackoverflow.com/questions/45735655/how-do-i-set-the-baseurl-for-angular-httpclient)
+API Back-end : [http://localhost:8080](http://localhost:8080)  
+Front-end :  [http://localhost:4200](http://localhost:4200)

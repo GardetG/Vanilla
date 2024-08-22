@@ -1,0 +1,6 @@
+export interface Sensor {
+  id: number;
+  name: string;
+  battery: number;
+  state: boolean
+}

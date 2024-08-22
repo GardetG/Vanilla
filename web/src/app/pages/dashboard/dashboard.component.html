@@ -1,5 +1,45 @@
 <div class="row">
     <nb-card>
-        <nb-card-body>Welcome to VANILLA application with API integration {{message}}</nb-card-body>
+        <nb-card-body>
+            <p>Welcome to VANILLA application. API: {{message}}</p>
+            <div>
+                <button nbButton status="primary" style="margin-bottom: 10px; width: 200px;" (click)="load()">Recharger</button>
+                 Recharge les données du dashboard <br>
+                <button nbButton status="primary" style="margin-bottom: 10px;  width: 200px;" (click)="autodisable()">Désactivation Auto</button>
+                 Désactive les objets sous le seuil de batterie faible <br>
+                <button nbButton status="primary" style="margin-bottom: 10px;  width: 200px;" (click)="update()">Mise à jour</button>
+                 Mise à jour des objets <span *ngIf="!!duration"> ( {{duration}} )</span>
+            </div>
+        </nb-card-body>
+    </nb-card>
+</div>
+
+<h1>Capteur</h1>
+<div class="row">
+    <nb-card *ngFor="let sensor of sensors">
+        <nb-card-body>
+            <div>
+                Nom: {{sensor.name}} <br>
+                Batterie: {{sensor.battery}} % <br>
+            </div>
+            <nb-toggle labelPosition="start" 
+            [(checked)]="sensor.state"
+            (checkedChange)="toogleSensor(sensor)">Actif: </nb-toggle>
+        </nb-card-body>
+    </nb-card>
+</div>
+
+<h1>Relais</h1>
+<div class="row">
+    <nb-card *ngFor="let relay of relays">
+        <nb-card-body>
+            <div>
+                Nom: {{relay.name}} <br>
+                Batterie: {{relay.battery}} % <br>
+            </div>
+            <nb-toggle labelPosition="start" 
+            [(checked)]="relay.state"
+            (checkedChange)="toogleRelay(relay)">Actif: </nb-toggle>
+        </nb-card-body>
     </nb-card>
 </div>

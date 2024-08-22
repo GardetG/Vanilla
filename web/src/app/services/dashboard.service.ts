@@ -9,6 +9,6 @@ export class DashboardService {
 
     load(): Observable<string> {
         return this.http
-            .get('api/message', {responseType: 'text'});
+            .get('api/status', {responseType: 'text'});
     }
 }

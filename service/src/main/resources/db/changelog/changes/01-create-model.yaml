@@ -1,0 +1,24 @@
+databaseChangeLog:
+  - changeSet:
+      id: 1
+      author: GG0ACB5L
+      changes:
+        - createTable:
+            tableName: model
+            columns:
+              - column:
+                  name: id
+                  type: int
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: name
+                  type: varchar(25)
+              - column:
+                  name: constructor
+                  type: varchar(25)
+              - column:
+                  name: volt_max
+                  type: int

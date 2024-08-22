@@ -1,6 +1,0 @@
-databaseChangeLog:
-  - changeSet:
-      id: empty-example
-      author: tomasz wojewodka
-      changes:
-        - empty: {}
